@@ -25,6 +25,9 @@ document.getElementById('search-button')
 
     try
     {
+        const pokemonContainer = document.querySelector('.pokemon-container');
+        pokemonContainer.classList.remove('show');
+
         const data = await getPokemonData(userInput);
         const pokemonIdentifiers = getPokemonIdentifiers(data);
         const pokemonMeasures = getPokemonMeasures(data);
@@ -33,6 +36,8 @@ document.getElementById('search-button')
         const pokemonImage = getPokemonSprite(data);
         fillPageData(pokemonIdentifiers, pokemonMeasures,
             pokemonTypes, pokemonStatistics, pokemonImage);
+        
+        pokemonContainer.classList.add('show');
     }
     catch (error)
     {
