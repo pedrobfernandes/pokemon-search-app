@@ -11,6 +11,7 @@ const typeColors =
     normal: "#A8A878"
 };
 
+/* Foca no input */
 getInputFocus();
 
 document.getElementById('search-button')
@@ -21,7 +22,17 @@ document.getElementById('search-button')
     
     /* Cuida de limpar o input */
     document.getElementById('search-input').value = '';
-    getInputFocus();
+    
+    /*
+        Apenas se a tela for maior que 768px.
+        Em celular acaba perdendo um pouco da acessibilidade pois
+        depois de apertar o botão o foco não volta ao input,
+        mas o teclado já não fica na frente da tabela.. 
+    */
+    if (!isMobileDevice())
+    {
+        getInputFocus();
+    }
     
     if (userInput === '')
     {
@@ -197,6 +208,16 @@ const updatePokemonSprite = (pokemonImage, pokemonName) =>
     imgElement.alt = `${pokemonName} pokémon sprite`;
     spriteContainer.appendChild(imgElement);
 }
+
+/*
+    Cuida de verificar o tamanho da tela.
+    O foco no input em tela de celular coloca o teclado
+    em cima da tabela..
+*/
+const isMobileDevice = () =>
+{
+    return(window.innerWidth <= 768);
+};
 
 /* Cuida de colocar o foco no input */
 function getInputFocus()
