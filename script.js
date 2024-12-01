@@ -11,11 +11,17 @@ const typeColors =
     normal: "#A8A878"
 };
 
+getInputFocus();
+
 document.getElementById('search-button')
     .addEventListener('click', async () =>
 {
     const userInput = document.getElementById('search-input')
         .value.trim().toLowerCase();
+    
+    /* Cuida de limpar o input */
+    document.getElementById('search-input').value = '';
+    getInputFocus();
     
     if (userInput === '')
     {
@@ -191,3 +197,9 @@ const updatePokemonSprite = (pokemonImage, pokemonName) =>
     imgElement.alt = `${pokemonName} pokémon sprite`;
     spriteContainer.appendChild(imgElement);
 }
+
+/* Cuida de colocar o foco no input */
+function getInputFocus()
+{
+    document.getElementById('search-input').focus();
+};

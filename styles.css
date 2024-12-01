@@ -128,7 +128,8 @@ main
     transform: translateY(0.4rem);
 }
 
-.search-button:focus
+.search-button:focus,
+.search-input:focus
 {
     outline: 0.5rem solid var(--contrast-color);
 }
